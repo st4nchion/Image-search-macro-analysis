@@ -175,10 +175,10 @@ Let's look inside the function just below.
 
 Using the function cv.minmaxLoc, calculate the maximum and minimum similarity of the two images and store maximum similarity in variable v60.
 
-![acc_4](https://user-images.githubusercontent.com/41680753/55668882-ca1b9280-58aa-11e9-8edc-69794142b8f4.PNG)
-
 At last, compare maximum accuracy and accuracy we've entered.
 If maximum accuracy is lower than accuracy we've entered, return 0 or 1.
+
+[detaile information about cv.minmaxLoc] : https://docs.opencv.org/2.4/modules/core/doc/operations_on_arrays.html#void%20minMaxLoc(InputArray%20src,%20double*%20minVal,%20double*%20maxVal,%20Point*%20minLoc,%20Point*%20maxLoc,%20InputArray%20mask)
 
 ![acc_5](https://user-images.githubusercontent.com/41680753/55668930-9d1baf80-58ab-11e9-99e2-e8f5af1180c0.PNG)
 
