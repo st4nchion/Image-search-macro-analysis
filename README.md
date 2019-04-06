@@ -53,12 +53,12 @@ The above picture shows the function of image search and information about the f
   
   [detail information about GetCurrentDirectoryW] : https://docs.microsoft.com/en-us/windows/desktop/api/winbase/nf-winbase-getcurrentdirectory
   
-  ![source_image_append_bmp](https://user-images.githubusercontent.com/41680753/55665804-595f8080-5880-11e9-9b95-788419e59251.PNG)
+  ![source_image_append_bmp](https://user-images.githubusercontent.com/41680753/55667034-21613900-5892-11e9-94b0-d1a74af7c5f6.PNG)
   
   1. Save the directory name that contain image want to find in location_1
   2. Append the image name to the location_1 (directory name) and Save in location_append_image_name
-  3. Append the extension "bmp" to the v20 and Save in v21
-  4. Store information from v21 in v55 through sprintf
+  3. Append the extension "bmp" to the location_append_image_name and Save in v21
+  4. Store information from v21 in v55
   
   ![abs_loction](https://user-images.githubusercontent.com/41680753/55665888-8ceeda80-5881-11e9-9ef7-8defd070b6f3.PNG)
   
@@ -92,6 +92,7 @@ The above picture shows the function of image search and information about the f
   
   ![create_opencv_class](https://user-images.githubusercontent.com/41680753/55666556-af85f100-588b-11e9-9778-5894436bf889.png)
   
-  In Concurrency::details::SchedulerBase::Create function 
+  Put v5 and BMI.BMIHEADER.BIWIDTH into the arguments of the function.
+  And in Concurrency::details::SchedulerBase::Create function 
   
   ![create_opencv_class_2](https://user-images.githubusercontent.com/41680753/55666574-f83daa00-588b-11e9-940e-b0d6c3d58a78.png)
