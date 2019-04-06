@@ -43,6 +43,8 @@ The above picture shows the function of image search and information about the f
   
 **1. How does the function bring information about the image it wants to find?**
 ------------------------------------------------------------------------------
+**All actions are operated within the above function**
+
   ![getcurrentdirectoryW](https://user-images.githubusercontent.com/41680753/55665601-a2620580-587d-11e9-9456-3bdc6e109101.PNG)
   
   Gets the absolute path of the macro is exist (current process) and stores it in BUFFER with a size of 100.
@@ -68,3 +70,14 @@ The above picture shows the function of image search and information about the f
   [detaile information about LoadImageW] : https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-loadimagew
   
   ![source_image_dc](https://user-images.githubusercontent.com/41680753/55666234-8b73e100-5886-11e9-9ff4-600ae603743a.PNG)
+  
+  Let's look inside the function sub_18060DED0.
+  
+  ![compatibledc](https://user-images.githubusercontent.com/41680753/55666309-07baf400-5888-11e9-9f37-abc290a5babf.PNG)
+  
+  1. In line 2, Creates a memory DC compatible with the application's current screen and Save the handle to a memory DC in v3.
+  2. Then, After V3 and V2 are passed as arguments, return a handle to the object being replaced.
+  
+  [detaile information about createcompatibledc] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatibledc
+  
+  [detaile information about selectobject] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-selectobject
