@@ -3,7 +3,7 @@
 <pre><code>
 Made by Lapid, CAT-Security
 
-If you want to use somthing in this documents, please state the source.
+If you want to use something in this documents, please state the source.
 
 thk
 </code></pre>
