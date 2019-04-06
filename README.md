@@ -99,6 +99,8 @@ The above picture shows the function of image search and information about the f
   
   Using the v5 and bmi.bmiHeader.biwidth received by arguments, calculate the operation in the cvCreateData function and return the value to v26.
   
+  ![img_last](https://user-images.githubusercontent.com/41680753/55668193-44471980-58a1-11e9-9db8-afaf9d299454.PNG)
+  
   **So far, we've analyzed the parts that bring information about the images we want to find.**
   
 **2. How does the function get information about the window to which the image is to be found?**
@@ -126,5 +128,12 @@ After opration, this function return a handle to the compatible bitmap
 
 Other functions operate the same as before.
 
+[detaile information about createcompatiblebitmap] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatiblebitmap
+
 ![memu_4](https://user-images.githubusercontent.com/41680753/55667809-3a6ee780-589c-11e9-99c6-4a7a6f5fbfc9.PNG)
+
+This function is important element of macro based on image searching.
+It copies a visual window into the specified device context., typically a printer DC.
+
+![memu_5](https://user-images.githubusercontent.com/41680753/55668194-45784680-58a1-11e9-8ddb-e7fa8575f943.PNG)
 
