@@ -150,10 +150,22 @@ Just as in the case above,This part also receives the height and width of the im
 ------------------------------------------------------------------------------
 **All actions are operated within the above function**
 
+Now that we have stored all the information about image we want to find and the screen of the window we want to compare to the image we want to find, we have to use it to calculate the accuracy of each other.
+
 ![acc_1](https://user-images.githubusercontent.com/41680753/55668621-5f1c8c80-58a7-11e9-844e-8f6ef538f0dc.PNG)
 
+This is a function that compares the image to be found and the image to be compared.
 
+Let's go inside this function.
+
+![acc_3](https://user-images.githubusercontent.com/41680753/55668780-42815400-58a9-11e9-82f2-4bca891db896.PNG)
+
+Using this function, compares a template against overlapped image regions.
+
+And then
+
+[detaile information about cv.MatchTemplate] : https://docs.opencv.org/2.4/modules/imgproc/doc/object_detection.html?highlight=matchtemplate#cv.MatchTemplate
 
 ![acc_2](https://user-images.githubusercontent.com/41680753/55668623-5f1c8c80-58a7-11e9-8118-a2fe695a0f74.PNG)
 
-
+Using cv.minmaxLoc function, 
