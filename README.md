@@ -105,3 +105,19 @@ The above picture shows the function of image search and information about the f
 ------------------------------------------------------------------------------
 **All actions are operated within the above function**
 
+![memu_1](https://user-images.githubusercontent.com/41680753/55667537-70aa6800-5898-11e9-92f6-c45834877fbc.PNG)
+
+Using GetWindowDc function and argument hWnda(handle of android emulator), retrieve the android emulator's device context and store a handle to a device context for the specialized window in the HDC variable.
+
+![memu_2](https://user-images.githubusercontent.com/41680753/55667538-71db9500-5898-11e9-8192-d180ba002f2f.PNG)
+
+And then hdc, hWnda and variables needed for operation are passed on to __printwindow function. 
+
+![memu_3](https://user-images.githubusercontent.com/41680753/55667541-73a55880-5898-11e9-9b64-ad89908e9a83.PNG)
+
+In __printwindow function, we can see a configuration similar to when we bring information about the image we want to find.
+Among them, we can see in the second row that we haven't seen before.
+This function creates a bitmap compatible with the device that is associated with the specified device context.
+
+![memu_4](https://user-images.githubusercontent.com/41680753/55667809-3a6ee780-589c-11e9-99c6-4a7a6f5fbfc9.PNG)
+
