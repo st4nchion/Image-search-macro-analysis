@@ -136,7 +136,9 @@ Other functions operate the same as before.
 ![memu_4](https://user-images.githubusercontent.com/41680753/55667809-3a6ee780-589c-11e9-99c6-4a7a6f5fbfc9.PNG)
 
 This function is important element of macro based on image searching.
-It copies a visual window into the specified device context., typically a printer DC.
+It copies a visual window into the specified device context, typically a printer DC.
+
+[detaile information about printwindow] : https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-printwindow
 
 ![memu_5](https://user-images.githubusercontent.com/41680753/55668194-45784680-58a1-11e9-8ddb-e7fa8575f943.PNG)
 
@@ -144,6 +146,8 @@ Just as in the case above,This part also receives the height and width of the im
 
 **Now the MEMU variable contains information about the screen of the window to compare the images we want to find**
 
-**2. How does the function get information about the window to which the image is to be found?**
+**3. Let's compare android emulator's image and image we want to find**
 ------------------------------------------------------------------------------
 **All actions are operated within the above function**
+
+
