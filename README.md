@@ -175,6 +175,8 @@ Let's look inside the function just below.
 
 Using the function cv.minmaxLoc, calculate the maximum and minimum similarity of the two images and store maximum similarity in variable v60.
 
+![acc_last](https://user-images.githubusercontent.com/41680753/55668969-62fedd80-58ac-11e9-8037-701ce93fd889.PNG)
+
 At last, compare maximum accuracy and accuracy we've entered.
 If maximum accuracy is lower than accuracy we've entered, return 0 or 1.
 
