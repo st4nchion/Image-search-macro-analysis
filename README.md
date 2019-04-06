@@ -23,8 +23,9 @@ So while searching for macro that contain this function, i found dll that user c
 
 <center><img src = "https://user-images.githubusercontent.com/41680753/55665052-85283980-5873-11e9-9f32-5cf163f7636d.png"></center>
 
-Now let's use IDA PRO and x64 debugger to analyze that DLL.
+Now let's use IDA PRO to analyze that DLL.
 
+**Every analysize was acheived with IDA PRO**
 
 ANALYSIS
 --------------------
@@ -99,6 +100,8 @@ The above picture shows the function of image search and information about the f
   
   Using the v5 and bmi.bmiHeader.biwidth received by arguments, calculate the operation in the cvCreateData function and return the value to v26.
   
+  [detaile information about cvCreateData] : https://docs.opencv.org/2.4/modules/core/doc/old_basic_structures.html?highlight=cvcreatedata#void%20cvCreateData(CvArr*%20arr)
+  
   ![img_last](https://user-images.githubusercontent.com/41680753/55668193-44471980-58a1-11e9-9db8-afaf9d299454.PNG)
   
   **So far, we've analyzed the parts that bring information about the images we want to find.**
@@ -137,3 +140,10 @@ It copies a visual window into the specified device context., typically a printe
 
 ![memu_5](https://user-images.githubusercontent.com/41680753/55668194-45784680-58a1-11e9-8ddb-e7fa8575f943.PNG)
 
+Just as in the case above,This part also receives the height and width of the image as a arguments and calculate the operation in the cvCreateData function and return the value.
+
+**Now the MEMU variable contains information about the screen of the window to compare the images we want to find**
+
+**2. How does the function get information about the window to which the image is to be found?**
+------------------------------------------------------------------------------
+**All actions are operated within the above function**
