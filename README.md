@@ -150,4 +150,10 @@ Just as in the case above,This part also receives the height and width of the im
 ------------------------------------------------------------------------------
 **All actions are operated within the above function**
 
+![acc_1](https://user-images.githubusercontent.com/41680753/55668621-5f1c8c80-58a7-11e9-844e-8f6ef538f0dc.PNG)
+
+
+
+![acc_2](https://user-images.githubusercontent.com/41680753/55668623-5f1c8c80-58a7-11e9-8118-a2fe695a0f74.PNG)
+
 
