@@ -1,7 +1,7 @@
 # Analysis-and-Summary
 
 <pre><code>
-Made by Lapid, Cat-Security
+Made by Lapid, CAT-Security
 
 If you want to use somthing in this documents, please state the source.
 
@@ -168,4 +168,21 @@ And then
 
 ![acc_2](https://user-images.githubusercontent.com/41680753/55668623-5f1c8c80-58a7-11e9-8118-a2fe695a0f74.PNG)
 
-Using cv.minmaxLoc function, 
+Let's look inside the function just below.
+
+![acc_4](https://user-images.githubusercontent.com/41680753/55668808-8e33fd80-58a9-11e9-8c15-c750d7b007a1.PNG)
+
+
+Using the function cv.minmaxLoc, calculate the maximum and minimum similarity of the two images and store maximum similarity in variable v60.
+
+![acc_4](https://user-images.githubusercontent.com/41680753/55668882-ca1b9280-58aa-11e9-8edc-69794142b8f4.PNG)
+
+At last, compare maximum accuracy and accuracy we've entered.
+If maximum accuracy is lower than accuracy we've entered, return 0 or 1.
+
+![acc_5](https://user-images.githubusercontent.com/41680753/55668930-9d1baf80-58ab-11e9-99e2-e8f5af1180c0.PNG)
+
+However, because it subtracts 1 from the corresponding return value at the end of ImageSearchAndClick function, it returns 0 if the image is ultimately found and -1 if not found.
+
+
+# PROTECTION TECHNIQUE
