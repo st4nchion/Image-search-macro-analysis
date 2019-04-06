@@ -118,6 +118,13 @@ And then hdc, hWnda and variables needed for operation are passed on to __printw
 In __printwindow function, we can see a configuration similar to when we bring information about the image we want to find.
 Among them, we can see in the second row that we haven't seen before.
 This function creates a bitmap compatible with the device that is associated with the specified device context.
+* **Arguments Explain**
+  - v9 : DC of andriod emulator
+  - v6 : bitmap width, in pixels
+  - v8 : bitmap height, in pixels
+After opration, this function return a handle to the compatible bitmap
+
+Other functions operate the same as before.
 
 ![memu_4](https://user-images.githubusercontent.com/41680753/55667809-3a6ee780-589c-11e9-99c6-4a7a6f5fbfc9.PNG)
 
