@@ -99,7 +99,9 @@ The above picture shows the function of image search and information about the f
   
   Using the v5 and bmi.bmiHeader.biwidth received by arguments, calculate the operation in the cvCreateData function and return the value to v26.
   
-  So far, we've analyzed the parts that bring information about the images we want to find.
+  **So far, we've analyzed the parts that bring information about the images we want to find.**
   
 **2. How does the function get information about the window to which the image is to be found?**
 ------------------------------------------------------------------------------
+**All actions are operated within the above function**
+
