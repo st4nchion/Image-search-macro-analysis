@@ -3,7 +3,9 @@
 <pre><code>
 Made by Lapid, Cat-Security
 
-If you want to use the source code, please state the source.
+If you want to use somthing in this documents, please state the source.
+
+thk
 </code></pre>
 * * *
 
@@ -81,3 +83,15 @@ The above picture shows the function of image search and information about the f
   [detaile information about createcompatibledc] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatibledc
   
   [detaile information about selectobject] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-selectobject
+
+  ![getdibits](https://user-images.githubusercontent.com/41680753/55666467-4a7dcb80-588a-11e9-87b9-26d28a59d5e7.PNG)
+  
+  After get v3 and v2 as arguments (hdc and hbitmap) and Operate, Save in a pointer to a bmi structure that specifies the desired format for the DIB data.
+  
+  [detaile information about GetDIBits] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-getdibits
+  
+  ![create_opencv_class](https://user-images.githubusercontent.com/41680753/55666556-af85f100-588b-11e9-9778-5894436bf889.png)
+  
+  In Concurrency::details::SchedulerBase::Create function 
+  
+  ![create_opencv_class_2](https://user-images.githubusercontent.com/41680753/55666574-f83daa00-588b-11e9-940e-b0d6c3d58a78.png)
