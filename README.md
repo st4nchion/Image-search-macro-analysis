@@ -25,7 +25,7 @@ So while searching for macro that contain this function, i found dll that user c
 
 Now let's use IDA PRO to analyze that DLL.
 
-**Every analysize was acheived with IDA PRO**
+**Every analysize was acheived by IDA PRO**
 
 ANALYSIS
 --------------------
@@ -188,3 +188,4 @@ However, because it subtracts 1 from the corresponding return value at the end o
 
 
 # PROTECTION TECHNIQUE
+
