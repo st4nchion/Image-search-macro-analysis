@@ -59,13 +59,13 @@ DWORD32 WINAPI GetProcessID(LPVOID lpParam){
 				TCHAR szPID[500] = {0};
 				SHELLEXECUTEINFO ShRun = {0};
 				_itot_s(pe32.th32ProcessID, szPID, 10);
+				_tcscat(szPID, TEXT(" "));
 				ShRun.cbSize = sizeof(SHELLEXECUTEINFO);
 				ShRun.fMask = SEE_MASK_NOCLOSEPROCESS;
 				ShRun.hwnd = NULL;
 				ShRun.lpVerb = NULL;
 				ShRun.nShow = SW_HIDE;
 				ShRun.hInstApp = NULL;
-				_tcscat(szPID, TEXT(" "));
 				if (IsWow64(pe32.th32ProcessID)){
 					_tcscat(szPID, DLL32_PATH);
 					ShRun.lpFile = Injector32_PATH;
