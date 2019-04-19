@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <windows.h>
 #include <tchar.h>
 #include <shellapi.h>
@@ -22,10 +21,10 @@ LPFN_ISWOW64PROCESS fnIsWow64Process;
 HINSTANCE g_hInst;
 LPCTSTR lpszClass = TEXT("CAT-Security");
 //Constraint : Paths -> Absolute Path
-LPCTSTR Injector32_PATH = TEXT("C:\\Users\\gud425\\Desktop\\project\\injector_32.exe");
-LPCTSTR Injector64_PATH = TEXT("C:\\Users\\gud425\\Desktop\\project\\injector_64.exe");
-LPCTSTR DLL32_PATH = TEXT("C:\\Users\\gud425\\Desktop\\project\\dll_32.dll");
-LPCTSTR DLL64_PATH = TEXT("C:\\Users\\gud425\\Desktop\\project\\dll_64.dll");
+LPCTSTR Injector32_PATH = TEXT("Input Your 32bit Injector Path");
+LPCTSTR Injector64_PATH = TEXT("Input Your 64bit Injector Path");
+LPCTSTR DLL32_PATH = TEXT("Input Your 32bit DLL Path");
+LPCTSTR DLL64_PATH = TEXT("Input Your 64bit DLL Path");
 LRESULT CALLBACK WndProc(HWND hwnd, UINT, WPARAM wParam, LPARAM lParam);
 BOOL IsFirst = TRUE;
 HANDLE hMutex;
