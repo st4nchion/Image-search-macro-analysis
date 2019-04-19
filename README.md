@@ -269,6 +269,9 @@ If the function succeeds, the returned value is a handle to the new thread. Othe
 
 [more information about CreateRemoteThread] : https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createremotethread
 
+We’ve just seen that the CreateRemoteThread function can be used to start a new thread in the address space of some process.
+Now it’s time to present the whole process we’ll be using to inject a DLL into the process’ address space. To get a clear indication of what we’re going to do, take a look at the picture below, where the process we’ll be injecting a DLL into is marked with purple color and has a name victim.exe. But, there are two other pieces of the puzzle we need to clarify. First, we need to establish that if we want to inject a DLL into some process, we must first have the DLL we would like to inject
+
 * dynamic link library code
 <pre><code>#include <Windows.h>
 #include <stdio.h>
