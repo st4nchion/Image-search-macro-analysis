@@ -189,3 +189,8 @@ However, because it subtracts 1 from the corresponding return value at the end o
 
 # PROTECTION TECHNIQUE
 
+We used the method of disabling that macro through dll injection.
+To inject dll into all processes, we made 32-bit, 64-bit injectors and dlls.
+
+
+<pre><code></code></pre>
