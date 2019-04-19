@@ -70,7 +70,7 @@ The above picture shows the function of image search and information about the f
 
   Loads the stand-alone image from the file specified by lpszName (image that we want to find) and Save in bitmap variable.
   
-  [detaile information about LoadImageW] : https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-loadimagew
+  [detail information about LoadImageW] : https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-loadimagew
   
   ![source_image_dc](https://user-images.githubusercontent.com/41680753/55666234-8b73e100-5886-11e9-9ff4-600ae603743a.PNG)
   
@@ -81,15 +81,15 @@ The above picture shows the function of image search and information about the f
   1. In line 2, Creates a memory DC compatible with the application's current screen and Save the handle to a memory DC in v3.
   2. Then, After V3 and V2 are passed as arguments, return a handle to the object being replaced.
   
-  [detaile information about createcompatibledc] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatibledc
+  [detail information about createcompatibledc] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatibledc
   
-  [detaile information about selectobject] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-selectobject
+  [detail information about selectobject] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-selectobject
 
   ![getdibits](https://user-images.githubusercontent.com/41680753/55666467-4a7dcb80-588a-11e9-87b9-26d28a59d5e7.PNG)
   
   After get v3 and v2 as arguments (hdc and hbitmap) and Operate, Save in a pointer to a bmi structure that specifies the desired format for the DIB data.
   
-  [detaile information about GetDIBits] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-getdibits
+  [detail information about GetDIBits] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-getdibits
   
   ![create_opencv_class](https://user-images.githubusercontent.com/41680753/55666556-af85f100-588b-11e9-9778-5894436bf889.png)
   
@@ -100,7 +100,7 @@ The above picture shows the function of image search and information about the f
   
   Using the v5 and bmi.bmiHeader.biwidth received by arguments, calculate the operation in the cvCreateData function and return the value to v26.
   
-  [detaile information about cvCreateData] : https://docs.opencv.org/2.4/modules/core/doc/old_basic_structures.html?highlight=cvcreatedata#void%20cvCreateData(CvArr*%20arr)
+  [detail information about cvCreateData] : https://docs.opencv.org/2.4/modules/core/doc/old_basic_structures.html?highlight=cvcreatedata#void%20cvCreateData(CvArr*%20arr)
   
   ![img_last](https://user-images.githubusercontent.com/41680753/55668193-44471980-58a1-11e9-9db8-afaf9d299454.PNG)
   
@@ -131,14 +131,14 @@ After opration, this function return a handle to the compatible bitmap
 
 Other functions operate the same as before.
 
-[detaile information about createcompatiblebitmap] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatiblebitmap
+[detail information about createcompatiblebitmap] : https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-createcompatiblebitmap
 
 ![memu_4](https://user-images.githubusercontent.com/41680753/55667809-3a6ee780-589c-11e9-99c6-4a7a6f5fbfc9.PNG)
 
 This function is important element of macro based on image searching.
 It copies a visual window into the specified device context, typically a printer DC.
 
-[detaile information about printwindow] : https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-printwindow
+[detail information about printwindow] : https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-printwindow
 
 ![memu_5](https://user-images.githubusercontent.com/41680753/55668194-45784680-58a1-11e9-8ddb-e7fa8575f943.PNG)
 
@@ -164,7 +164,7 @@ Using this function, compares a template against overlapped image regions.
 
 And then
 
-[detaile information about cv.MatchTemplate] : https://docs.opencv.org/2.4/modules/imgproc/doc/object_detection.html?highlight=matchtemplate#cv.MatchTemplate
+[detail information about cv.MatchTemplate] : https://docs.opencv.org/2.4/modules/imgproc/doc/object_detection.html?highlight=matchtemplate#cv.MatchTemplate
 
 ![acc_2](https://user-images.githubusercontent.com/41680753/55668623-5f1c8c80-58a7-11e9-8118-a2fe695a0f74.PNG)
 
@@ -180,7 +180,7 @@ Using the function cv.minmaxLoc, calculate the maximum and minimum similarity of
 At last, compare maximum accuracy and accuracy we've entered.
 If maximum accuracy is lower than accuracy we've entered, return 0 or 1.
 
-[detaile information about cv.minmaxLoc] : https://docs.opencv.org/2.4/modules/core/doc/operations_on_arrays.html#void%20minMaxLoc(InputArray%20src,%20double*%20minVal,%20double*%20maxVal,%20Point*%20minLoc,%20Point*%20maxLoc,%20InputArray%20mask)
+[detail information about cv.minmaxLoc] : https://docs.opencv.org/2.4/modules/core/doc/operations_on_arrays.html#void%20minMaxLoc(InputArray%20src,%20double*%20minVal,%20double*%20maxVal,%20Point*%20minLoc,%20Point*%20maxLoc,%20InputArray%20mask)
 
 ![acc_5](https://user-images.githubusercontent.com/41680753/55668930-9d1baf80-58ab-11e9-99e2-e8f5af1180c0.PNG)
 
@@ -192,5 +192,158 @@ However, because it subtracts 1 from the corresponding return value at the end o
 We used the method of disabling that macro through dll injection.
 To inject dll into all processes, we made 32-bit, 64-bit injectors and dlls.
 
+* injector code
+<pre><code>#include <windows.h>
+#include <tchar.h>
+#include <stdio.h>
+#include <shellapi.h>
+#include <tlhelp32.h>
+#define UNICODE
+BOOL InjectDll(DWORD dwPID, LPCTSTR szDllPath);
+int _tmain(int argc, TCHAR**argv){
+	if (argc != 3) {
+		_tprintf(TEXT("USAGE : Injector PID DLL_PATH\n"));
+	}
+	else {
+		InjectDll(_tstoi(argv[1]), argv[2]);
+	}
+}
+BOOL InjectDll(DWORD dwPID, LPCTSTR szDllPath) {
+	HANDLE hProcess = NULL, hThread = NULL;
+	HMODULE hModule = NULL;
+	LPVOID pRemoteBuf = NULL;
+	DWORD dwBufSize = (DWORD)(_tcslen(szDllPath) + 1) * sizeof(TCHAR);
+	LPTHREAD_START_ROUTINE pThreadproc;
+	if (!(hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPID))) {
+		return FALSE;
+	}
+	pRemoteBuf = VirtualAllocEx(hProcess, NULL, dwBufSize, MEM_COMMIT, PAGE_READWRITE);
+	WriteProcessMemory(hProcess, pRemoteBuf, (LPVOID)szDllPath, dwBufSize, NULL);
+	hModule = GetModuleHandle(TEXT("kernel32.dll"));
+	pThreadproc = (LPTHREAD_START_ROUTINE)GetProcAddress(hModule, "LoadLibraryW");
+	hThread = CreateRemoteThread(hProcess, NULL, 0, pThreadproc, pRemoteBuf, 0, NULL);
+	WaitForSingleObject(hThread, INFINITE);
+	CloseHandle(hThread);
+	CloseHandle(hProcess);
+	return TRUE;
+}</code></pre>
 
-<pre><code></code></pre>
+The source code above is the complete code of the injector.
+A major part of this is
+<pre><code>BOOL InjectDll(DWORD dwPID, LPCTSTR szDllPath) {
+	HANDLE hProcess = NULL, hThread = NULL;
+	HMODULE hModule = NULL;
+	LPVOID pRemoteBuf = NULL;
+	DWORD dwBufSize = (DWORD)(_tcslen(szDllPath) + 1) * sizeof(TCHAR);
+	LPTHREAD_START_ROUTINE pThreadproc;
+	if (!(hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPID))) {
+		return FALSE;
+	}
+	pRemoteBuf = VirtualAllocEx(hProcess, NULL, dwBufSize, MEM_COMMIT, PAGE_READWRITE);
+	WriteProcessMemory(hProcess, pRemoteBuf, (LPVOID)szDllPath, dwBufSize, NULL);
+	hModule = GetModuleHandle(TEXT("kernel32.dll"));
+	pThreadproc = (LPTHREAD_START_ROUTINE)GetProcAddress(hModule, "LoadLibraryW");
+	hThread = CreateRemoteThread(hProcess, NULL, 0, pThreadproc, pRemoteBuf, 0, NULL);
+	WaitForSingleObject(hThread, INFINITE);
+	CloseHandle(hThread);
+	CloseHandle(hProcess);
+	return TRUE;
+}</pre></code>
+
+We used CreateRemoteThread to do dll injection.
+The CreateRemoteThread function creates a thread in the virtual address space of an arbitrary process. Let’s take a look at the parameters we must pass to the functions, which we can see on the picture below.
+
+![image](https://user-images.githubusercontent.com/41680753/56423668-2d181b00-62e8-11e9-8228-44bd6e1a481c.png)
+
+It’s immediately clear that we must pass a value in the first six parameters, but the function writes some value into the last parameter. Let’s describe the parameters a little bit more.
+
+- hProcess: handle to the process where we’ll create a new thread
+- lpThreadAttributes: a pointer to the SECURITY_ATTRIBUTES structure, which specifies the security attributes of the new thread: if NULL, the thread will have default security attributes and the handle cannot be inherited by the child process
+- dwStackSize: initial size of the stack
+- lpStartAddress: a pointer to the LPTHREAD_START_ROUTINE, which is a function that will be executed by the new thread. It’s needless to say that the function must exists in the remote process.
+- lpParameter: a pointer to a variable to be passed to the thread function
+- dwCreationFlags : a value that controls the creation of the thread
+- ThreadId: a pointer to a variable that receives the thread ID
+
+If the function succeeds, the returned value is a handle to the new thread. Otherwise, the function returns NULL.
+
+[more information about CreateRemoteThread] : https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createremotethread
+
+* dynamic link library code
+<pre><code>#include <Windows.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <tchar.h>
+#include <psapi.h>
+#define UNICODE
+
+LPVOID dest;
+BYTE OrgBytes[5] = { 0, };
+
+BOOL MyHookFunc(HWND hwnd, HDC  hdcBlt, UINT nFlags) {
+	HWND MEmu = NULL;
+	char debug_buf[100];
+	HMODULE hMod;
+	HANDLE hProc = NULL;
+	LPVOID pDestFuncAddr;
+	DWORD pGapOfAddress, dwOldProtect;
+	BYTE NewBytes[5] = { 0xE9,0, };
+	BOOL ret;
+	MEmu = FindWindow(0, TEXT("MEmu"));
+	if (MEmu == hwnd) {
+		return false;
+	}
+	else {
+		VirtualProtect(dest, 5, PAGE_EXECUTE_READWRITE, &dwOldProtect);
+		memcpy(dest, OrgBytes, 5);
+		VirtualProtect(dest, 5, dwOldProtect, &dwOldProtect);
+		ret = PrintWindow(hwnd, hdcBlt, nFlags);
+
+		hMod = GetModuleHandleA("User32.dll");
+		pDestFuncAddr = (LPVOID)GetProcAddress(hMod, "PrintWindow");
+		dest = pDestFuncAddr;
+		memcpy(&OrgBytes[0], dest, 5);
+		pGapOfAddress = (DWORD)&MyHookFunc - (DWORD)pDestFuncAddr - 5;
+		memcpy(&NewBytes[1], &pGapOfAddress, 4);
+		VirtualProtect(pDestFuncAddr, 5, PAGE_EXECUTE_READWRITE, &dwOldProtect);
+		memcpy(pDestFuncAddr, NewBytes, 5);
+		VirtualProtect(pDestFuncAddr, 5, dwOldProtect, &dwOldProtect);
+
+		return ret;
+	}
+}
+DWORD WINAPI HookCode(LPVOID lparam) {
+	HMODULE hMod;
+	HANDLE hProc = NULL;
+	LPVOID pDestFuncAddr;
+	DWORD pGapOfAddress, dwOldProtect;
+	BYTE NewBytes[5] = { 0xE9,0, };
+
+	hMod = GetModuleHandleA("User32.dll");
+	pDestFuncAddr = (LPVOID)GetProcAddress(hMod, "PrintWindow");
+	dest = pDestFuncAddr;
+	memcpy(&OrgBytes[0], dest, 5);
+	pGapOfAddress = (DWORD)&MyHookFunc - (DWORD)pDestFuncAddr - 5;
+	memcpy(&NewBytes[1], &pGapOfAddress, 4);
+	VirtualProtect(pDestFuncAddr, 5, PAGE_EXECUTE_READWRITE, &dwOldProtect);
+	memcpy(pDestFuncAddr, NewBytes, 5);
+	VirtualProtect(pDestFuncAddr, 5, dwOldProtect, &dwOldProtect);
+	return 0;
+}
+BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
+	HANDLE hThread;
+	switch (fdwReason) {
+		case DLL_PROCESS_ATTACH:
+			hThread = CreateThread(NULL, 0, HookCode, NULL, 0, NULL);
+			break;
+		case DLL_PROCESS_DETACH:
+			break;
+		case DLL_THREAD_ATTACH:
+			break;
+		case DLL_THREAD_DETACH:
+			break;
+	}
+	return TRUE;
+}</pre></code>
+
+
