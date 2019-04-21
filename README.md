@@ -28,7 +28,7 @@ Now let's use IDA PRO to analyze that DLL.
 **Every analysize was acheived by IDA PRO**
 
 ANALYSIS
---------------------
+-------------------
 
 ![imagesearch_param](https://user-images.githubusercontent.com/41680753/55665309-084b8e80-5878-11e9-83a5-cd6a5c32cde0.PNG)
 
