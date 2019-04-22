@@ -360,45 +360,46 @@ Refer to the source code for more information.
 * process monitor(auto injector) code
 
 <code><pre>while (1){
-		NEW_PID.clear();
-		pe32.dwSize = sizeof(PROCESSENTRY32);
-		hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-		Process32First(hProcessSnap, &pe32);
-		do{
-			IsOverlap = 0;
-			if (((find(NEW_PID.begin(), NEW_PID.end(), pe32.th32ProcessID)) == NEW_PID.end())){
-				NEW_PID.insert(NEW_PID.end(), pe32.th32ProcessID);
-				IsOverlap = 1;
+	NEW_PID.clear();
+	pe32.dwSize = sizeof(PROCESSENTRY32);
+	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	Process32First(hProcessSnap, &pe32);
+	do{
+		IsOverlap = 0;
+		if (((find(NEW_PID.begin(), NEW_PID.end(), pe32.th32ProcessID)) == NEW_PID.end())){
+			NEW_PID.insert(NEW_PID.end(), pe32.th32ProcessID);
+			IsOverlap = 1;
+		}
+		if (((find(OLD_PID.begin(), OLD_PID.end(), pe32.th32ProcessID)) == OLD_PID.end()) && IsOverlap){
+			TCHAR szPID[500] = {0};
+			SHELLEXECUTEINFO ShRun = {0};
+			_itot_s(pe32.th32ProcessID, szPID, 10);
+			_tcscat(szPID, TEXT(" "));
+			ShRun.cbSize = sizeof(SHELLEXECUTEINFO);
+			ShRun.fMask = SEE_MASK_NOCLOSEPROCESS;
+			ShRun.hwnd = NULL;
+			ShRun.lpVerb = NULL;
+			ShRun.nShow = SW_HIDE;
+			ShRun.hInstApp = NULL;
+			if (IsWow64(pe32.th32ProcessID)){
+				_tcscat(szPID, DLL32_PATH);
+				ShRun.lpFile = Injector32_PATH;
 			}
-			if (((find(OLD_PID.begin(), OLD_PID.end(), pe32.th32ProcessID)) == OLD_PID.end()) && IsOverlap){
-				TCHAR szPID[500] = {0};
-				SHELLEXECUTEINFO ShRun = {0};
-				_itot_s(pe32.th32ProcessID, szPID, 10);
-				_tcscat(szPID, TEXT(" "));
-				ShRun.cbSize = sizeof(SHELLEXECUTEINFO);
-				ShRun.fMask = SEE_MASK_NOCLOSEPROCESS;
-				ShRun.hwnd = NULL;
-				ShRun.lpVerb = NULL;
-				ShRun.nShow = SW_HIDE;
-				ShRun.hInstApp = NULL;
-				if (IsWow64(pe32.th32ProcessID)){
-					_tcscat(szPID, DLL32_PATH);
-					ShRun.lpFile = Injector32_PATH;
-				}
-				else{
-					_tcscat(szPID, DLL64_PATH);
-					ShRun.lpFile = Injector64_PATH;
-				}
-				ShRun.lpParameters = szPID;
-				ShellExecuteEx(&ShRun);
-				Sleep(10);
-				if (IsFirst)
-					Sleep(200);
+			else{
+				_tcscat(szPID, DLL64_PATH);
+				ShRun.lpFile = Injector64_PATH;
 			}
-		} while (Process32Next(hProcessSnap, &pe32));
-		if (IsFirst)
-			IsFirst = FALSE;
-		OLD_PID.clear();
-		OLD_PID = NEW_PID;
-		Sleep(100);
-	}</pre><code>
+			ShRun.lpParameters = szPID;
+			ShellExecuteEx(&ShRun);
+			Sleep(10);
+			if (IsFirst)
+				Sleep(200);
+		}
+	} while (Process32Next(hProcessSnap, &pe32));
+	if (IsFirst)
+		IsFirst = FALSE;
+	OLD_PID.clear();
+	OLD_PID = NEW_PID;
+	Sleep(100);
+}
+</pre></code>
