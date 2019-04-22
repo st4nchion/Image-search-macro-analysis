@@ -403,3 +403,8 @@ Refer to the source code for more information.
 		Sleep(100);
 	}
 </pre></code>
+
+This code is part of the process monitoring program.
+If the list of existing processes differs from the list of newly received processes through the iterative statements, a program that automatically inject dll by importing the PID of the process and executing the injector.
+
+Refer to the source code for more information.
