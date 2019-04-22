@@ -270,7 +270,11 @@ If the function succeeds, the returned value is a handle to the new thread. Othe
 [more information about CreateRemoteThread] : https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createremotethread
 
 We’ve just seen that the CreateRemoteThread function can be used to start a new thread in the address space of some process.
-Now it’s time to present the whole process we’ll be using to inject a DLL into the process’ address space. To get a clear indication of what we’re going to do, take a look at the picture below, where the process we’ll be injecting a DLL into is marked with purple color and has a name victim.exe. But, there are two other pieces of the puzzle we need to clarify. First, we need to establish that if we want to inject a DLL into some process, we must first have the DLL we would like to inject
+Now it’s time to present the whole process we’ll be using to inject a DLL into the process’ address space. To get a clear indication of what we’re going to do, take a look at the picture below, where the process we’ll be injecting a DLL into is marked with purple color and has a name victim.exe. But, there are two other pieces of the puzzle we need to clarify. First, we need to establish that if we want to inject a DLL into some process, we must first have the DLL we would like to inject. The DLL is presented with the green color and has a name inject.dll. But we must also have a program that will do the injection of the DLL into the victim’s address space. That program is presented in blue and has a name program.exe
+
+![image](https://user-images.githubusercontent.com/41680753/56491218-c3d01c00-6522-11e9-9247-c4c1e121ad7b.png)
+
+The program.exe must call the presented functions sequentially in order to be able to inject a DLL into the victim’s address space. First, it must call OpenProcess to get a handle to the victim’s process. Afterwards it must call GetProcAddress function to get the address of the LoadLibrary function inside the kernel32.dll library; here we can run any function we like, but it must be present in a DLL, which is already loaded in the process’s address space. We know that every program uses kernel32.dll library, so the best way to inject a DLL into the process’s address space is looking for the LoadLibraryA function and calling that. In order for our DLL to be loaded, we must pass a DLL path to the LoadLibraryA function, but the name needs to be stored somewhere inside the processes address space. Obviously, it’s highly unlikely for the path to our DLL to already be present somewhere in the process’s address space, which is why we need the next two functions: VirtualAllocEx and WriteProcessMemory. The first function allocates a new memory range inside the process’s address space. The size of that memory region needs to be only as large to fit the name of the DLL inside it; usually the size is rounded up to occupy at least one page. The WriteProcessMemory is the function that actually writes the path of our DLL to the victim’s address space. At last, the CreateRemoteThread is called that calls the LoadLibrary function inside the victim’s address space to inject a DLL into it.
 
 * dynamic link library code
 <pre><code>#include <Windows.h>
@@ -292,12 +296,12 @@ BOOL MyHookFunc(HWND hwnd, HDC  hdcBlt, UINT nFlags) {
 	DWORD pGapOfAddress, dwOldProtect;
 	BYTE NewBytes[5] = { 0xE9,0, };
 	BOOL ret;
-	MEmu = FindWindow(0, TEXT("MEmu"));
+	MEmu = FindWindow(0, TEXT("MEmu")); // get memu's handle
 	if (MEmu == hwnd) {
-		return false;
+		return false;	
 	}
 	else {
-		VirtualProtect(dest, 5, PAGE_EXECUTE_READWRITE, &dwOldProtect);
+		VirtualProtect(dest, 5, PAGE_EXECUTE_READWRITE, &dwOldProtect); // Changes the protection on a region of committed pages in the virtual address space of the calling proces.
 		memcpy(dest, OrgBytes, 5);
 		VirtualProtect(dest, 5, dwOldProtect, &dwOldProtect);
 		ret = PrintWindow(hwnd, hdcBlt, nFlags);
@@ -350,3 +354,4 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 }</pre></code>
 
 
+If Dll is attached, CreateThread function is called.
