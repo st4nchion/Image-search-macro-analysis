@@ -359,8 +359,7 @@ Refer to the source code for more information.
 
 * process monitor(auto injector) code
 
-<code><pre>
-while (1){
+<pre><code>while (1){
 		NEW_PID.clear();
 		pe32.dwSize = sizeof(PROCESSENTRY32);
 		hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
