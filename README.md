@@ -353,5 +353,4 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 	return TRUE;
 }</pre></code>
 
-
-If Dll is attached, CreateThread function is called.
+If another process takes the handle of the app player and uses the handle of the app player for the PrintWindow function, it will not recognize the image through PrintWindow by giving the screen of the app player but the screen of another thread created by the CreateThread function.
